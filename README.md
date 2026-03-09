@@ -11,19 +11,14 @@ This is a minimal reproduction for local-only Wrangler Secrets Store persistence
 From this directory, run:
 
 ```bash
-mkdir -p .tmp/cf-secrets-persist
-```
-
-```bash
 wrangler secrets-store secret create test-store \
   --name TEST_SECRET \
   --value 'UNIQUE_CF_SECRET_9d3f4b6e' \
-  --scopes workers \
-  --persist-to .tmp/cf-secrets-persist
+  --scopes workers
 ```
 
 ```bash
-rg -n 'UNIQUE_CF_SECRET_9d3f4b6e' .tmp/cf-secrets-persist
+rg -n 'UNIQUE_CF_SECRET_9d3f4b6e' .wrangler/state
 ```
 
 ## Expected
@@ -32,4 +27,4 @@ No plaintext match on disk.
 
 ## Actual
 
-The plaintext secret is found in the local persisted state under `.tmp/cf-secrets-persist`.
+The plaintext secret is found in the local persisted state under `.wrangler/state`.
