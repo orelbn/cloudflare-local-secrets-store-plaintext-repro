@@ -1,0 +1,3 @@
+name = "cf-local-secrets-store-plaintext-repro"
+main = "index.js"
+compatibility_date = "2026-03-01"
